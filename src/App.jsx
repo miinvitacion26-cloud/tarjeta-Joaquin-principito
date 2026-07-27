@@ -16,21 +16,25 @@ function App() {
   return (
     <div className="min-h-screen bg-[#070b19] flex flex-col items-center justify-center overflow-hidden">
       
-      {/* PANTALLA 1: SOBRE CON TEXTO LIMPIO */}
+     {/* PANTALLA 1: SOBRE CON TEXTO MEJORADO Y FONDO OSCURECIDO */}
       {pantalla === 1 && (
         <div 
           className={`relative w-full h-screen flex items-center justify-center cursor-pointer transition-all duration-700 ease-out ${abriendo ? 'opacity-0 scale-95' : 'opacity-100 scale-100'}`} 
           onClick={abrirInvitacion}
         >
+          {/* Imagen del sobre */}
           <img 
             src={imagenSobre} 
             alt="Toca para abrir" 
             className="w-full h-full object-contain"
           />
 
-          {/* Texto limpio sin recuadro feo, integrado en el medio del sobre */}
+          {/* Capa semitransparente oscura para oscurecer el fondo de la imagen y mejorar el contraste */}
+          <div className="absolute inset-0 bg-black/20 pointer-events-none"></div>
+
+          {/* Contenedor del texto con ancho limitado, salto de línea y SOMBRAS POTENTES */}
           <div className="absolute inset-0 flex items-center justify-center px-6 text-center pointer-events-none">
-            <p className="text-yellow-100 text-base md:text-lg font-serif tracking-wider animate-pulse drop-shadow-[0_2px_4px_rgba(0,0,0,0.9)]">
+            <p className="text-yellow-100 text-base md:text-lg font-serif tracking-wider animate-pulse max-w-[60%] break-words drop-shadow-[0_0_1px_rgba(0,0,0,1)] drop-shadow-[0_1px_3px_rgba(0,0,0,0.8)]">
               Toca el sobre para comenzar tu viaje
             </p>
           </div>
