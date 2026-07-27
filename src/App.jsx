@@ -16,7 +16,7 @@ function App() {
   return (
     <div className="min-h-screen bg-[#070b19] flex flex-col items-center justify-center overflow-hidden">
       
-     {/* PANTALLA 1: SOBRE CON TEXTO MEJORADO Y FONDO OSCURECIDO */}
+      {/* PANTALLA 1: SOBRE CON TEXTO AL 75% Y ALTO CONTRASTE */}
       {pantalla === 1 && (
         <div 
           className={`relative w-full h-screen flex items-center justify-center cursor-pointer transition-all duration-700 ease-out ${abriendo ? 'opacity-0 scale-95' : 'opacity-100 scale-100'}`} 
@@ -29,30 +29,30 @@ function App() {
             className="w-full h-full object-contain"
           />
 
-          {/* Capa semitransparente oscura para oscurecer el fondo de la imagen y mejorar el contraste */}
+          {/* Capa semitransparente oscura para mejorar el contraste */}
           <div className="absolute inset-0 bg-black/20 pointer-events-none"></div>
 
-          {/* Contenedor del texto con ancho limitado, salto de línea y SOMBRAS POTENTES */}
+          {/* Contenedor del texto al 75% con sombras profesionales */}
           <div className="absolute inset-0 flex items-center justify-center px-6 text-center pointer-events-none">
-            <p className="text-yellow-100 text-base md:text-lg font-serif tracking-wider animate-pulse max-w-[60%] break-words drop-shadow-[0_0_1px_rgba(0,0,0,1)] drop-shadow-[0_1px_3px_rgba(0,0,0,0.8)]">
+            <p className="text-yellow-100 text-base md:text-lg font-serif tracking-wider animate-pulse max-w-[75%] break-words drop-shadow-[0_0_1px_rgba(0,0,0,1)] drop-shadow-[0_1px_3px_rgba(0,0,0,0.8)]">
               Toca el sobre para comenzar tu viaje
             </p>
           </div>
         </div>
       )}
 
-      {/* PANTALLA 2: INVITACIÓN CON BOTÓN EN EL LUGAR EXACTO */}
+      {/* PANTALLA 2: INVITACIÓN Y BOTÓN DE INGRESAR */}
       {pantalla === 2 && (
         <div className="relative w-full h-screen flex flex-col items-center justify-center animate-in fade-in zoom-in duration-700">
           
-          {/* Imagen de la invitación de fondo ocupando la pantalla */}
+          {/* Imagen de la invitación */}
           <img 
             src={imagenInvitacion} 
             alt="¡Un viaje mágico hacia mis 2 años!" 
             className="w-full h-full object-contain" 
           />
           
-          {/* Botón transparente posicionado exactamente encima del cartel "INGRESAR" de la imagen */}
+          {/* Botón táctil posicionado sobre el cartel "INGRESAR" */}
           <button 
             onClick={() => setPantalla(3)} 
             className="absolute top-[51%] left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[55%] h-[7%] opacity-0 cursor-pointer z-10"
