@@ -13,7 +13,6 @@ function App() {
     }, 700);
   };
 
-  // Fotos para el carrusel (puedes agregar más rutas aquí si lo deseas)
   const fotosCarrusel = [
     imagenInvitacion,
   ];
@@ -29,21 +28,21 @@ function App() {
   };
 
   return (
-    <div className="min-h-screen bg-[#070b19] flex flex-col items-center justify-center overflow-x-hidden relative">
+    <div className="min-h-screen bg-[#070b19] flex flex-col items-center justify-center relative overflow-x-hidden">
       
-      {/* PANTALLA 1: SOBRE */}
+      {/* ================= PANTALLA 1: SOBRE ================= */}
       {pantalla === 1 && (
         <div 
-          className={`absolute inset-0 w-full h-screen flex items-center justify-center cursor-pointer transition-all duration-700 ease-out ${abriendo ? 'opacity-0 scale-95' : 'opacity-100 scale-100'}`} 
+          className={`w-full h-screen flex items-center justify-center cursor-pointer transition-all duration-700 ease-out ${abriendo ? 'opacity-0 scale-95' : 'opacity-100 scale-100'}`} 
           onClick={abrirInvitacion}
         >
           <img 
             src={imagenSobre} 
             alt="Toca para abrir" 
-            className="w-full h-full object-contain"
+            className="w-full h-full object-contain absolute inset-0"
           />
           <div className="absolute inset-0 bg-black/20 pointer-events-none"></div>
-          <div className="absolute inset-0 flex items-center justify-center px-6 text-center pointer-events-none">
+          <div className="absolute inset-0 flex items-center justify-center px-6 text-center pointer-events-none z-10">
             <p className="text-yellow-100 text-base md:text-lg font-serif tracking-wider animate-pulse max-w-[75%] break-words drop-shadow-[0_0_1px_rgba(0,0,0,1)] drop-shadow-[0_1px_3px_rgba(0,0,0,0.8)]">
               Toca el sobre para comenzar tu viaje
             </p>
@@ -51,13 +50,13 @@ function App() {
         </div>
       )}
 
-      {/* PANTALLA 2: INVITACIÓN */}
+      {/* ================= PANTALLA 2: INVITACIÓN ================= */}
       {pantalla === 2 && (
-        <div className="absolute inset-0 w-full h-screen flex flex-col items-center justify-center animate-in fade-in zoom-in duration-700">
+        <div className="w-full h-screen flex flex-col items-center justify-center relative animate-in fade-in zoom-in duration-700">
           <img 
             src={imagenInvitacion} 
             alt="¡Un viaje mágico hacia mis 2 años!" 
-            className="w-full h-full object-contain" 
+            className="w-full h-full object-contain absolute inset-0" 
           />
           <button 
             onClick={() => setPantalla(3)} 
@@ -69,9 +68,9 @@ function App() {
         </div>
       )}
 
-      {/* PANTALLA 3: INFORMACIÓN Y CARRUSEL LIMPIO */}
+      {/* ================= PANTALLA 3: INFORMACIÓN Y CARRUSEL ================= */}
       {pantalla === 3 && (
-        <div className="absolute inset-0 w-full min-h-screen flex items-center justify-center p-4 overflow-y-auto bg-[#070b19] z-30">
+        <div className="w-full min-h-screen flex flex-col items-center justify-center p-4 relative animate-in fade-in duration-700 my-auto">
           
           {/* ESTRELLITAS FLOTANTES DE ANIMACIÓN ÚNICA */}
           <div className="absolute inset-0 pointer-events-none overflow-hidden z-0">
@@ -83,7 +82,7 @@ function App() {
           </div>
 
           {/* TARJETA PRINCIPAL */}
-          <div className="relative z-10 text-white text-center animate-in fade-in duration-1000 bg-sky-950/90 p-6 md:p-8 rounded-3xl max-w-lg w-[95%] shadow-2xl backdrop-blur-md border border-yellow-300/30 my-8">
+          <div className="relative z-10 text-white text-center bg-sky-950/90 p-6 md:p-8 rounded-3xl max-w-lg w-[95%] shadow-2xl backdrop-blur-md border border-yellow-300/30 my-8">
             
             <h1 className="text-3xl md:text-4xl font-serif font-bold text-yellow-300 mb-2">¡Bienvenidos!</h1>
             <p className="text-sky-200 text-sm md:text-base italic mb-6">
@@ -148,4 +147,4 @@ function App() {
   );
 }
 
-export default App;
+exports default App; // o export default App; (mantén el export default App original)
