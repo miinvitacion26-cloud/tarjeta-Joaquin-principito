@@ -13,12 +13,9 @@ function App() {
     }, 700);
   };
 
-  // Puedes reemplazar estas fotos de ejemplo con las rutas de tus imágenes o importar más
+  // Fotos para el carrusel (puedes agregar más rutas aquí si lo deseas)
   const fotosCarrusel = [
     imagenInvitacion,
-    // Aquí puedes agregar más imágenes si gustas, por ejemplo:
-    // './assets/foto2.png',
-    // './assets/foto3.png',
   ];
 
   const [fotoActual, setFotoActual] = useState(0);
@@ -32,12 +29,12 @@ function App() {
   };
 
   return (
-    <div className="min-h-screen bg-[#070b19] flex flex-col items-center justify-center overflow-hidden relative">
+    <div className="min-h-screen bg-[#070b19] flex flex-col items-center justify-center overflow-x-hidden relative">
       
       {/* PANTALLA 1: SOBRE */}
       {pantalla === 1 && (
         <div 
-          className={`relative w-full h-screen flex items-center justify-center cursor-pointer transition-all duration-700 ease-out ${abriendo ? 'opacity-0 scale-95' : 'opacity-100 scale-100'}`} 
+          className={`absolute inset-0 w-full h-screen flex items-center justify-center cursor-pointer transition-all duration-700 ease-out ${abriendo ? 'opacity-0 scale-95' : 'opacity-100 scale-100'}`} 
           onClick={abrirInvitacion}
         >
           <img 
@@ -56,7 +53,7 @@ function App() {
 
       {/* PANTALLA 2: INVITACIÓN */}
       {pantalla === 2 && (
-        <div className="relative w-full h-screen flex flex-col items-center justify-center animate-in fade-in zoom-in duration-700">
+        <div className="absolute inset-0 w-full h-screen flex flex-col items-center justify-center animate-in fade-in zoom-in duration-700">
           <img 
             src={imagenInvitacion} 
             alt="¡Un viaje mágico hacia mis 2 años!" 
@@ -64,7 +61,7 @@ function App() {
           />
           <button 
             onClick={() => setPantalla(3)} 
-            className="absolute top-[51%] left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[55%] h-[7%] opacity-0 cursor-pointer z-10"
+            className="absolute top-[51%] left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[55%] h-[7%] opacity-0 cursor-pointer z-20"
             aria-label="Ingresar"
           >
             INGRESAR
@@ -72,9 +69,9 @@ function App() {
         </div>
       )}
 
-      {/* PANTALLA 3: INFORMACIÓN, CARRUSEL Y ESTRELLITAS MÁGICAS */}
+      {/* PANTALLA 3: INFORMACIÓN Y CARRUSEL LIMPIO */}
       {pantalla === 3 && (
-        <div className="relative z-10 w-full min-h-screen flex items-center justify-center p-4 overflow-y-auto">
+        <div className="absolute inset-0 w-full min-h-screen flex items-center justify-center p-4 overflow-y-auto bg-[#070b19] z-30">
           
           {/* ESTRELLITAS FLOTANTES DE ANIMACIÓN ÚNICA */}
           <div className="absolute inset-0 pointer-events-none overflow-hidden z-0">
@@ -85,10 +82,9 @@ function App() {
             <span className="absolute text-yellow-200 text-2xl animate-[ping_2.2s_ease-out_1] top-[10%] right-[40%] opacity-75">✨</span>
           </div>
 
-          {/* TARJETA PRINCIPAL CON SCROLL INTERNO SI ES NECESARIO */}
+          {/* TARJETA PRINCIPAL */}
           <div className="relative z-10 text-white text-center animate-in fade-in duration-1000 bg-sky-950/90 p-6 md:p-8 rounded-3xl max-w-lg w-[95%] shadow-2xl backdrop-blur-md border border-yellow-300/30 my-8">
             
-            {/* Mensaje especial de bienvenida */}
             <h1 className="text-3xl md:text-4xl font-serif font-bold text-yellow-300 mb-2">¡Bienvenidos!</h1>
             <p className="text-sky-200 text-sm md:text-base italic mb-6">
               "Lo esencial es invisible a los ojos... ¡Acompañame a festejar mis 2 añitos en este viaje mágico!"
@@ -101,7 +97,6 @@ function App() {
                 alt="Recuerdo" 
                 className="w-full h-full object-contain transition-all duration-500"
               />
-              {/* Botones del carrusel (solo si hay más de 1 foto) */}
               {fotosCarrusel.length > 1 && (
                 <>
                   <button onClick={anteriorFoto} className="absolute left-2 bg-black/50 text-yellow-300 p-2 rounded-full hover:bg-black/80 transition">❮</button>
@@ -117,7 +112,7 @@ function App() {
               <p>📍 <strong>¿Dónde?</strong> [Lugar aquí]</p>
             </div>
 
-            {/* BOTONES DE ACCIÓN (MAPS Y WHATSAPP) */}
+            {/* BOTONES DE ACCIÓN */}
             <div className="flex flex-col sm:flex-row gap-3 justify-center mb-6">
               <a 
                 href="AQUI_PEGAR_LINK_DE_GOOGLE_MAPS" 
@@ -138,7 +133,6 @@ function App() {
               </a>
             </div>
 
-            {/* Botón para volver */}
             <button 
               onClick={() => setPantalla(2)} 
               className="text-yellow-200/80 hover:text-yellow-200 underline text-sm md:text-base transition"
