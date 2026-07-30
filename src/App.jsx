@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import imagenSobre from './assets/Sobre.png';
 import imagenInvitacion from './assets/invitacion_ingresar.png';
+import foto2 from './assets/Joaquin_Sentado.jpeg'; // Cambia esto por el nombre de tu archivo
+import foto3 from './assets/Joaquin_Pelotero.jpeg'; // Cambia esto por el nombre de tu archivo
 
 function App() {
   const [pantalla, setPantalla] = useState(1);
@@ -13,8 +15,11 @@ function App() {
     }, 700);
   };
 
+  // Arreglo con todas las fotos del carrusel
   const fotosCarrusel = [
     imagenInvitacion,
+    foto2,
+    foto3,
   ];
 
   const [fotoActual, setFotoActual] = useState(0);
@@ -28,12 +33,12 @@ function App() {
   };
 
   return (
-    <div className="min-h-screen bg-[#070b19] flex flex-col items-center justify-center relative overflow-x-hidden">
+    <div className="min-h-screen bg-[#070b19] w-full relative overflow-x-hidden">
       
-      {/* ================= PANTALLA 1: SOBRE ================= */}
+      {/* PANTALLA 1: SOBRE */}
       {pantalla === 1 && (
         <div 
-          className={`w-full h-screen flex items-center justify-center cursor-pointer transition-all duration-700 ease-out ${abriendo ? 'opacity-0 scale-95' : 'opacity-100 scale-100'}`} 
+          className={`fixed inset-0 w-full h-screen flex items-center justify-center cursor-pointer transition-all duration-700 ease-out bg-[#070b19] z-50 ${abriendo ? 'opacity-0 scale-95' : 'opacity-100 scale-100'}`} 
           onClick={abrirInvitacion}
         >
           <img 
@@ -50,9 +55,9 @@ function App() {
         </div>
       )}
 
-      {/* ================= PANTALLA 2: INVITACIÓN ================= */}
+      {/* PANTALLA 2: INVITACIÓN */}
       {pantalla === 2 && (
-        <div className="w-full h-screen flex flex-col items-center justify-center relative animate-in fade-in zoom-in duration-700">
+        <div className="fixed inset-0 w-full h-screen flex flex-col items-center justify-center bg-[#070b19] z-40 animate-in fade-in duration-500">
           <img 
             src={imagenInvitacion} 
             alt="¡Un viaje mágico hacia mis 2 años!" 
@@ -60,7 +65,7 @@ function App() {
           />
           <button 
             onClick={() => setPantalla(3)} 
-            className="absolute top-[51%] left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[55%] h-[7%] opacity-0 cursor-pointer z-20"
+            className="absolute top-[51%] left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[55%] h-[7%] opacity-0 cursor-pointer z-50"
             aria-label="Ingresar"
           >
             INGRESAR
@@ -68,11 +73,11 @@ function App() {
         </div>
       )}
 
-      {/* ================= PANTALLA 3: INFORMACIÓN Y CARRUSEL ================= */}
+      {/* PANTALLA 3: INFORMACIÓN Y CARRUSEL */}
       {pantalla === 3 && (
-        <div className="w-full min-h-screen flex flex-col items-center justify-center p-4 relative animate-in fade-in duration-700 my-auto">
+        <div className="w-full min-h-screen flex flex-col items-center justify-center p-4 relative bg-[#070b19] z-30 py-12">
           
-          {/* ESTRELLITAS FLOTANTES DE ANIMACIÓN ÚNICA */}
+          {/* ESTRELLITAS FLOTANTES */}
           <div className="absolute inset-0 pointer-events-none overflow-hidden z-0">
             <span className="absolute text-yellow-200 text-2xl animate-[ping_1.5s_ease-out_1] top-[15%] left-[20%] opacity-80">✨</span>
             <span className="absolute text-yellow-300 text-xl animate-[ping_1.8s_ease-out_1] top-[30%] right-[25%] opacity-90">⭐</span>
@@ -82,7 +87,7 @@ function App() {
           </div>
 
           {/* TARJETA PRINCIPAL */}
-          <div className="relative z-10 text-white text-center bg-sky-950/90 p-6 md:p-8 rounded-3xl max-w-lg w-[95%] shadow-2xl backdrop-blur-md border border-yellow-300/30 my-8">
+          <div className="relative z-10 text-white text-center bg-sky-950/90 p-6 md:p-8 rounded-3xl max-w-lg w-[95%] shadow-2xl backdrop-blur-md border border-yellow-300/30 my-auto">
             
             <h1 className="text-3xl md:text-4xl font-serif font-bold text-yellow-300 mb-2">¡Bienvenidos!</h1>
             <p className="text-sky-200 text-sm md:text-base italic mb-6">
@@ -96,6 +101,7 @@ function App() {
                 alt="Recuerdo" 
                 className="w-full h-full object-contain transition-all duration-500"
               />
+              {/* Botones para cambiar de foto (flechas izquierda y derecha) */}
               {fotosCarrusel.length > 1 && (
                 <>
                   <button onClick={anteriorFoto} className="absolute left-2 bg-black/50 text-yellow-300 p-2 rounded-full hover:bg-black/80 transition">❮</button>
@@ -147,4 +153,4 @@ function App() {
   );
 }
 
-export default App; // o export default App; (mantén el export default App original)
+export default App;
