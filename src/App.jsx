@@ -55,23 +55,7 @@ function App() {
         </div>
       )}
 
-      {/* PANTALLA 2: INVITACIÓN */}
-      {pantalla === 2 && (
-        <div className="fixed inset-0 w-full h-screen flex flex-col items-center justify-center bg-[#070b19] z-40 animate-in fade-in duration-500">
-          <img 
-            src={imagenInvitacion} 
-            alt="¡Un viaje mágico hacia mis 2 años!" 
-            className="w-full h-full object-contain absolute inset-0" 
-          />
-          <button 
-            onClick={() => setPantalla(3)} 
-            className="absolute top-[51%] left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[55%] h-[7%] opacity-0 cursor-pointer z-50"
-            aria-label="Ingresar"
-          >
-            INGRESAR
-          </button>
-        </div>
-      )}
+      
 
       {/* PANTALLA 3: INFORMACIÓN Y CARRUSEL */}
       {pantalla === 3 && (
