@@ -147,4 +147,4 @@ function App() {
   );
 }
 
-exports default App; // o export default App; (mantén el export default App original)
+export default App; // o export default App; (mantén el export default App original)
