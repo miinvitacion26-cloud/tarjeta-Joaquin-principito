@@ -98,9 +98,9 @@ function App() {
         </div>
       )}
 
-      {/* PANTALLA 3: INFORMACIÓN GENERAL CON CONTENEDORES SEPARADOS Y BORDER BLANCO */}
+      {/* PANTALLA 3: INFORMACIÓN GENERAL */}
       {pantalla === 3 && (
-        <div className="w-full min-h-screen flex flex-col items-center p-4 relative bg-[#070b19] z-30 py-10">
+        <div className="w-full min-h-screen flex flex-col items-center p-4 relative bg-[#070b19] z-30 py-12">
           
           {/* ESTRELLITAS FLOTANTES */}
           <div className="absolute inset-0 pointer-events-none overflow-hidden z-0">
@@ -112,20 +112,26 @@ function App() {
           </div>
 
           {/* CONTENEDOR GENERAL */}
-          <div className="relative z-10 w-full max-w-md flex flex-col space-y-6 my-auto">
+          <div className="relative z-10 w-full max-w-md flex flex-col space-y-10 my-auto">
             
             {/* BLOQUE 1: TÍTULO Y MENSAJE */}
-            <div className="text-center bg-[#070b19] p-6 rounded-[2.5rem] shadow-2xl border-2 border-white">
-              <h1 className="text-3xl md:text-4xl font-bold mb-2 drop-shadow" style={{ color: '#fde047' }}>¡Bienvenidos!</h1>
-              <p className="text-sm md:text-base italic font-light" style={{ color: '#ffffff' }}>
+            <div className="text-center bg-[#070b19] p-6 rounded-[2.5rem] shadow-2xl border-2 border-yellow-200/60 relative overflow-hidden">
+              <span className="absolute top-2 left-4 text-yellow-300 text-sm animate-pulse">✦</span>
+              <span className="absolute top-3 right-6 text-yellow-300 text-xs animate-pulse">✨</span>
+              
+              <h1 className="text-3xl md:text-4xl font-bold mb-3 drop-shadow" style={{ color: '#fde047' }}>¡Bienvenidos!</h1>
+              <p className="text-sm md:text-base italic font-light leading-relaxed" style={{ color: '#ffffff' }}>
                 "Lo esencial es invisible a los ojos... ¡Acompañame a festejar mis 2 añitos en este viaje mágico!"
               </p>
+              
+              <span className="absolute bottom-2 left-6 text-yellow-300 text-xs animate-pulse">⭐</span>
+              <span className="absolute bottom-2 right-4 text-yellow-300 text-sm animate-pulse">✦</span>
             </div>
 
             {/* BLOQUE 2: CRONÓMETRO */}
             <div className="text-center bg-[#070b19] p-6 rounded-[2.5rem] shadow-2xl border-2 border-white">
-              <p className="text-xs md:text-sm font-semibold mb-3 tracking-widest uppercase" style={{ color: '#fde047' }}>
-                ¡Falta muy poco para mi cumple!:
+              <p className="text-xs md:text-sm font-semibold mb-4 tracking-widest uppercase" style={{ color: '#fde047' }}>
+                ✨ ¡Falta muy poco para mi cumple! ✨
               </p>
               
               <div className="grid grid-cols-4 gap-2 justify-items-center">
@@ -133,39 +139,39 @@ function App() {
                   <div className="w-14 h-14 md:w-16 md:h-16 flex-shrink-0 bg-slate-800 rounded-full border border-white flex items-center justify-center shadow-md">
                     <span className="text-lg md:text-xl font-bold" style={{ color: '#ffffff' }}>{tiempoRestante.dias}</span>
                   </div>
-                  <span className="text-[11px] mt-1.5 font-medium tracking-wide" style={{ color: '#ffffff' }}>Días</span>
+                  <span className="text-[11px] mt-2 font-medium tracking-wide" style={{ color: '#ffffff' }}>Días</span>
                 </div>
 
                 <div className="flex flex-col items-center">
                   <div className="w-14 h-14 md:w-16 md:h-16 flex-shrink-0 bg-slate-800 rounded-full border border-white flex items-center justify-center shadow-md">
                     <span className="text-lg md:text-xl font-bold" style={{ color: '#ffffff' }}>{tiempoRestante.horas}</span>
                   </div>
-                  <span className="text-[11px] mt-1.5 font-medium tracking-wide" style={{ color: '#ffffff' }}>Horas</span>
+                  <span className="text-[11px] mt-2 font-medium tracking-wide" style={{ color: '#ffffff' }}>Horas</span>
                 </div>
 
                 <div className="flex flex-col items-center">
                   <div className="w-14 h-14 md:w-16 md:h-16 flex-shrink-0 bg-slate-800 rounded-full border border-white flex items-center justify-center shadow-md">
                     <span className="text-lg md:text-xl font-bold" style={{ color: '#ffffff' }}>{tiempoRestante.minutos}</span>
                   </div>
-                  <span className="text-[11px] mt-1.5 font-medium tracking-wide" style={{ color: '#ffffff' }}>Minutos</span>
+                  <span className="text-[11px] mt-2 font-medium tracking-wide" style={{ color: '#ffffff' }}>Minutos</span>
                 </div>
 
                 <div className="flex flex-col items-center">
                   <div className="w-14 h-14 md:w-16 md:h-16 flex-shrink-0 bg-slate-800 rounded-full border border-white flex items-center justify-center shadow-md">
                     <span className="text-lg md:text-xl font-bold" style={{ color: '#ffffff' }}>{tiempoRestante.segundos}</span>
                   </div>
-                  <span className="text-[11px] mt-1.5 font-medium tracking-wide" style={{ color: '#ffffff' }}>Segundos</span>
+                  <span className="text-[11px] mt-2 font-medium tracking-wide" style={{ color: '#ffffff' }}>Segundos</span>
                 </div>
               </div>
             </div>
 
             {/* BLOQUE 3: CARRUSEL DE FOTOS */}
-            <div className="text-center bg-[#070b19] p-5 rounded-[2.5rem] shadow-2xl border-2 border-white flex flex-col items-center gap-3">
-              <div className="relative w-full aspect-[4/3] max-h-64 bg-black/60 rounded-2xl overflow-hidden border border-white/50 flex items-center justify-center shadow-inner">
+            <div className="text-center bg-[#070b19] p-5 rounded-[2.5rem] shadow-2xl border-2 border-white flex flex-col items-center gap-4">
+              <div className="relative w-full aspect-square max-h-80 rounded-2xl overflow-hidden border border-white/50 flex items-center justify-center shadow-inner bg-transparent">
                 <img 
                   src={fotosCarrusel[fotoActual]} 
                   alt="Recuerdo de Joaquín" 
-                  className="w-full h-full object-contain transition-all duration-700 ease-in-out"
+                  className="w-full h-full object-cover transition-all duration-700 ease-in-out"
                 />
               </div>
 
@@ -184,14 +190,14 @@ function App() {
             </div>
 
             {/* BLOQUE 4: DATOS DEL EVENTO */}
-            <div className="text-center bg-[#070b19] p-6 rounded-[2.5rem] shadow-2xl border-2 border-white space-y-3 text-sm md:text-base text-left">
+            <div className="text-center bg-[#070b19] p-6 rounded-[2.5rem] shadow-2xl border-2 border-white space-y-4 text-sm md:text-base text-left">
               <p className="flex items-start gap-3"><span>📅</span> <div><strong style={{ color: '#fde047' }}>¿Cuándo?</strong> <span style={{ color: '#ffffff' }}>5 de septiembre</span></div></p>
               <p className="flex items-start gap-3"><span>⏰</span> <div><strong style={{ color: '#fde047' }}>¿Hora?</strong> <span style={{ color: '#ffffff' }}>17:30hs a 20:00hs</span></div></p>
               <p className="flex items-start gap-3"><span>📍</span> <div><strong style={{ color: '#fde047' }}>¿Dónde?</strong> <span style={{ color: '#ffffff' }}>Independencia 638 (Rio de juegos y Cafe)</span></div></p>
             </div>
 
             {/* BLOQUE 5: MAPA Y UBICACIÓN */}
-            <div className="text-center bg-[#070b19] p-5 rounded-[2.5rem] shadow-2xl border-2 border-white space-y-3">
+            <div className="text-center bg-[#070b19] p-5 rounded-[2.5rem] shadow-2xl border-2 border-white space-y-4">
               <div className="w-full h-48 rounded-2xl overflow-hidden border border-white/50">
                 <iframe 
                   src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3102.6385594217927!2d-68.05018729273549!3d-38.95508484363874!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x960a33192492f059%3A0x331ea667299c7588!2sUsOtbyBqdWVnb3MgbcOhcyBjYWbDqQ!5e0!3m2!1ses-419!2sar!4v1785525783714!5m2!1ses-419!2sar" 
@@ -215,11 +221,13 @@ function App() {
             </div>
 
             {/* BLOQUE 6: CONFIRMAR ASISTENCIA */}
-            <div className="text-center bg-[#070b19] p-6 rounded-[2.5rem] shadow-2xl border-2 border-white flex flex-col items-center space-y-4">
+            <div className="text-center bg-[#070b19] p-6 rounded-[2.5rem] shadow-2xl border-2 border-yellow-200/60 flex flex-col items-center space-y-4 relative overflow-hidden">
+              <span className="text-yellow-300 text-sm tracking-widest">✦ ── ✨ ── ✦</span>
+              
               <h3 className="text-xl md:text-2xl font-serif italic tracking-wide" style={{ color: '#fde047' }}>
                 CONFIRMAR ASISTENCIA
               </h3>
-              <p className="text-xs md:text-sm font-light italic" style={{ color: '#ffffff' }}>
+              <p className="text-xs md:text-sm font-light italic leading-relaxed" style={{ color: '#ffffff' }}>
                 Por favor, confirmá tu presencia antes del 29 de agosto.
               </p>
 
@@ -227,20 +235,10 @@ function App() {
                 href="https://wa.me/5492995966349?text=¡Hola!%20Confirmo%20mi%20asistencia%20al%20cumple%20de%20Joaquín." 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="w-full bg-[#7a3e54] hover:bg-[#8c4962] text-white font-serif italic py-3.5 px-6 rounded-full shadow-lg transform hover:scale-105 transition-all text-sm md:text-base flex items-center justify-center gap-2 border border-white/30"
+                className="w-full bg-[#25d366] hover:bg-[#20ba5a] text-white font-bold py-3.5 px-6 rounded-full shadow-lg transform hover:scale-105 transition-all text-sm md:text-base flex items-center justify-center gap-2 border border-white/30"
               >
-                Confirmar por WhatsApp
+                💬 Confirmar por WhatsApp
               </a>
-            </div>
-
-            {/* ENLACE DE RETORNO */}
-            <div className="text-center pt-2">
-              <button 
-                onClick={() => setPantalla(2)} 
-                className="text-yellow-200/80 hover:text-yellow-200 underline text-xs transition"
-              >
-                Volver a la invitación
-              </button>
             </div>
 
           </div>
