@@ -58,18 +58,18 @@ function App() {
   };
 
   return (
-    <div className="min-h-[100dvh] bg-[#070b19] w-full relative overflow-x-hidden flex flex-col items-center">
+    <div className="min-h-screen bg-[#070b19] w-full relative overflow-x-hidden flex flex-col items-center">
       
       {/* PANTALLA 1: SOBRE */}
       {pantalla === 1 && (
         <div 
-          className={`fixed inset-0 w-full h-[100dvh] flex items-center justify-center cursor-pointer transition-all duration-700 ease-out bg-[#070b19] z-50 ${abriendo ? 'opacity-0 scale-95' : 'opacity-100 scale-100'}`} 
+          className={`fixed inset-0 w-full h-screen flex items-center justify-center cursor-pointer transition-all duration-700 ease-out bg-[#070b19] z-50 ${abriendo ? 'opacity-0 scale-95' : 'opacity-100 scale-100'}`} 
           onClick={abrirInvitacion}
         >
           <img 
             src={imagenSobre} 
             alt="Toca para abrir" 
-            className="w-full h-full object-cover absolute inset-0"
+            className="w-full h-full cover-contain absolute inset-0"
           />
           <div className="absolute inset-0 bg-black/20 pointer-events-none"></div>
           <div className="absolute inset-0 flex items-center justify-center px-6 text-center pointer-events-none z-10">
@@ -82,11 +82,11 @@ function App() {
 
       {/* PANTALLA 2: INVITACIÓN */}
       {pantalla === 2 && (
-        <div className="fixed inset-0 w-full h-[100dvh] flex flex-col items-center justify-center bg-[#070b19] z-40 animate-in fade-in duration-500">
+        <div className="fixed inset-0 w-full h-screen flex flex-col items-center justify-center bg-[#070b19] z-40 animate-in fade-in duration-500">
           <img 
             src={imagenInvitacion} 
             alt="¡Un viaje mágico hacia mis 2 años!" 
-            className="w-full h-full object-cover absolute inset-0" 
+            className="w-full h-full cover-contain absolute inset-0" 
           />
           <button 
             onClick={() => setPantalla(3)} 
@@ -100,7 +100,7 @@ function App() {
 
       {/* PANTALLA 3: INFORMACIÓN GENERAL */}
       {pantalla === 3 && (
-        <div className="w-full min-h-[100dvh] flex flex-col items-center p-4 relative bg-[#070b19] z-30 py-12 pb-24">
+        <div className="w-full min-h-screen flex flex-col items-center p-4 relative bg-[#070b19] z-30 py-12">
           
           {/* ESTRELLITAS FLOTANTES */}
           <div className="absolute inset-0 pointer-events-none overflow-hidden z-0">
@@ -120,7 +120,7 @@ function App() {
               <span className="absolute top-3 right-6 text-yellow-300 text-xs animate-pulse">✨</span>
               
               <h1 className="text-3xl md:text-4xl font-bold mb-3 drop-shadow" style={{ color: '#fde047' }}>¡Bienvenidos!</h1>
-              <p className="text-sm md:text-base italic font-light leading-relaxed text-white">
+              <p className="text-sm md:text-base italic font-light leading-relaxed" style={{ color: '#ffffff' }}>
                 "Lo esencial es invisible a los ojos... ¡Acompañame a festejar mis 2 añitos en este viaje mágico!"
               </p>
               
@@ -137,30 +137,30 @@ function App() {
               <div className="grid grid-cols-4 gap-2 justify-items-center">
                 <div className="flex flex-col items-center">
                   <div className="w-14 h-14 md:w-16 md:h-16 flex-shrink-0 bg-slate-800 rounded-full border border-white flex items-center justify-center shadow-md">
-                    <span className="text-lg md:text-xl font-bold text-white">{tiempoRestante.dias}</span>
+                    <span className="text-lg md:text-xl font-bold" style={{ color: '#ffffff' }}>{tiempoRestante.dias}</span>
                   </div>
-                  <span className="text-[11px] mt-2 font-medium tracking-wide text-white">Días</span>
+                  <span className="text-[11px] mt-2 font-medium tracking-wide" style={{ color: '#ffffff' }}>Días</span>
                 </div>
 
                 <div className="flex flex-col items-center">
                   <div className="w-14 h-14 md:w-16 md:h-16 flex-shrink-0 bg-slate-800 rounded-full border border-white flex items-center justify-center shadow-md">
-                    <span className="text-lg md:text-xl font-bold text-white">{tiempoRestante.horas}</span>
+                    <span className="text-lg md:text-xl font-bold" style={{ color: '#ffffff' }}>{tiempoRestante.horas}</span>
                   </div>
-                  <span className="text-[11px] mt-2 font-medium tracking-wide text-white">Horas</span>
+                  <span className="text-[11px] mt-2 font-medium tracking-wide" style={{ color: '#ffffff' }}>Horas</span>
                 </div>
 
                 <div className="flex flex-col items-center">
                   <div className="w-14 h-14 md:w-16 md:h-16 flex-shrink-0 bg-slate-800 rounded-full border border-white flex items-center justify-center shadow-md">
-                    <span className="text-lg md:text-xl font-bold text-white">{tiempoRestante.minutos}</span>
+                    <span className="text-lg md:text-xl font-bold" style={{ color: '#ffffff' }}>{tiempoRestante.minutos}</span>
                   </div>
-                  <span className="text-[11px] mt-2 font-medium tracking-wide text-white">Minutos</span>
+                  <span className="text-[11px] mt-2 font-medium tracking-wide" style={{ color: '#ffffff' }}>Minutos</span>
                 </div>
 
                 <div className="flex flex-col items-center">
                   <div className="w-14 h-14 md:w-16 md:h-16 flex-shrink-0 bg-slate-800 rounded-full border border-white flex items-center justify-center shadow-md">
-                    <span className="text-lg md:text-xl font-bold text-white">{tiempoRestante.segundos}</span>
+                    <span className="text-lg md:text-xl font-bold" style={{ color: '#ffffff' }}>{tiempoRestante.segundos}</span>
                   </div>
-                  <span className="text-[11px] mt-2 font-medium tracking-wide text-white">Segundos</span>
+                  <span className="text-[11px] mt-2 font-medium tracking-wide" style={{ color: '#ffffff' }}>Segundos</span>
                 </div>
               </div>
             </div>
@@ -191,9 +191,9 @@ function App() {
 
             {/* BLOQUE 4: DATOS DEL EVENTO */}
             <div className="text-center bg-[#070b19] p-6 rounded-[2.5rem] shadow-2xl border-2 border-white space-y-4 text-sm md:text-base text-left">
-              <p className="flex items-start gap-3 text-white"><span>📅</span> <div><strong style={{ color: '#fde047' }}>¿Cuándo?</strong> <span className="text-white">5 de septiembre</span></div></p>
-              <p className="flex items-start gap-3 text-white"><span>⏰</span> <div><strong style={{ color: '#fde047' }}>¿Hora?</strong> <span className="text-white">17:30hs a 20:00hs</span></div></p>
-              <p className="flex items-start gap-3 text-white"><span>📍</span> <div><strong style={{ color: '#fde047' }}>¿Dónde?</strong> <span className="text-white">Independencia 638 (Rio de juegos y Cafe)</span></div></p>
+              <p className="flex items-start gap-3"><span>📅</span> <div><strong style={{ color: '#fde047' }}>¿Cuándo?</strong> <span style={{ color: '#ffffff' }}>5 de septiembre</span></div></p>
+              <p className="flex items-start gap-3"><span>⏰</span> <div><strong style={{ color: '#fde047' }}>¿Hora?</strong> <span style={{ color: '#ffffff' }}>17:30hs a 20:00hs</span></div></p>
+              <p className="flex items-start gap-3"><span>📍</span> <div><strong style={{ color: '#fde047' }}>¿Dónde?</strong> <span style={{ color: '#ffffff' }}>Independencia 638 (Rio de juegos y Cafe)</span></div></p>
             </div>
 
             {/* BLOQUE 5: MAPA Y UBICACIÓN */}
@@ -227,7 +227,7 @@ function App() {
               <h3 className="text-xl md:text-2xl font-serif italic tracking-wide" style={{ color: '#fde047' }}>
                 CONFIRMAR ASISTENCIA
               </h3>
-              <p className="text-xs md:text-sm font-light italic leading-relaxed text-white">
+              <p className="text-xs md:text-sm font-light italic leading-relaxed" style={{ color: '#ffffff' }}>
                 Por favor, confirmá tu presencia antes del 29 de agosto.
               </p>
 
