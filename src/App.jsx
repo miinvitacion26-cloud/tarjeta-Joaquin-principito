@@ -90,7 +90,7 @@ function App() {
           />
           <button 
             onClick={() => setPantalla(3)} 
-            className="absolute top-[51%] left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[55%] h-[7%] opacity-0 cursor-pointer z-50"
+            className="absolute top-[45%] left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[55%] h-[7%] opacity-0 cursor-pointer z-50"
             aria-label="Ingresar"
           >
             INGRESAR
@@ -100,7 +100,7 @@ function App() {
 
       {/* PANTALLA 3: INFORMACIÓN GENERAL */}
       {pantalla === 3 && (
-        <div className="w-full min-h-screen flex flex-col items-center p-4 relative bg-[#070b19] z-30 py-12">
+        <div className="w-full min-h-[100dvh] flex flex-col items-center p-4 relative bg-[#070b19] z-30 py-12 pb-52">
           
           {/* ESTRELLITAS FLOTANTES */}
           <div className="absolute inset-0 pointer-events-none overflow-hidden z-0">
@@ -112,7 +112,7 @@ function App() {
           </div>
 
           {/* CONTENEDOR GENERAL */}
-          <div className="relative z-10 w-full max-w-md flex flex-col space-y-10 my-auto">
+          <div className="relative z-10 w-full max-w-md flex flex-col space-y-10 mt-6">
             
             {/* BLOQUE 1: TÍTULO Y MENSAJE */}
             <div className="text-center bg-[#070b19] p-6 rounded-[2.5rem] shadow-2xl border-2 border-yellow-200/60 relative overflow-hidden">
@@ -190,38 +190,66 @@ function App() {
             </div>
 
             {/* BLOQUE 4: DATOS DEL EVENTO */}
-            <div className="text-center bg-[#070b19] p-6 rounded-[2.5rem] shadow-2xl border-2 border-white space-y-4 text-sm md:text-base text-left">
-              <p className="flex items-start gap-3"><span>📅</span> <div><strong style={{ color: '#fde047' }}>¿Cuándo?</strong> <span style={{ color: '#ffffff' }}>5 de septiembre</span></div></p>
-              <p className="flex items-start gap-3"><span>⏰</span> <div><strong style={{ color: '#fde047' }}>¿Hora?</strong> <span style={{ color: '#ffffff' }}>17:30hs a 20:00hs</span></div></p>
-              <p className="flex items-start gap-3"><span>📍</span> <div><strong style={{ color: '#fde047' }}>¿Dónde?</strong> <span style={{ color: '#ffffff' }}>Independencia 638 (Rio de juegos y Cafe)</span></div></p>
-            </div>
+<div className="bg-[#070b19] p-6 rounded-3xl border border-yellow-200/40 shadow-xl space-y-5 text-center mx-auto w-full flex flex-col items-center">
+  
+  {/* Fecha */}
+  <div className="flex flex-col items-center space-y-1 pb-4 border-b border-gray-800 w-full">
+    <span className="text-2xl mb-1">📅</span>
+    <p style={{ color: '#fde047', fontSize: '11px', fontWeight: 'bold', textTransform: 'uppercase', letterSpacing: '1px' }}>¿Cuándo?</p>
+    <p style={{ color: '#ffffff', fontSize: '15px', fontWeight: '500' }}>5 de septiembre</p>
+  </div>
 
-            {/* BLOQUE 5: MAPA Y UBICACIÓN */}
-            <div className="text-center bg-[#070b19] p-5 rounded-[2.5rem] shadow-2xl border-2 border-white space-y-4">
-              <div className="w-full h-48 rounded-2xl overflow-hidden border border-white/50">
-                <iframe 
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3102.6385594217927!2d-68.05018729273549!3d-38.95508484363874!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x960a33192492f059%3A0x331ea667299c7588!2sUsOtbyBqdWVnb3MgbcOhcyBjYWbDqQ!5e0!3m2!1ses-419!2sar!4v1785525783714!5m2!1ses-419!2sar" 
-                  width="100%" 
-                  height="100%" 
-                  style={{ border: 0 }} 
-                  allowFullScreen="" 
-                  loading="lazy" 
-                  referrerPolicy="strict-origin-when-cross-origin"
-                  title="Ubicación Río de juegos y Café"
-                ></iframe>
-              </div>
-              <a 
-                href="https://maps.google.com/?q=Independencia+638" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="w-full bg-yellow-400 hover:bg-yellow-500 text-sky-950 font-bold py-3 px-4 rounded-full shadow-lg transform hover:scale-105 transition-all text-xs md:text-sm flex items-center justify-center gap-2"
-              >
-                🗺️ Cómo llegar
-              </a>
-            </div>
+  {/* Hora */}
+  <div className="flex flex-col items-center space-y-1 pb-4 border-b border-gray-800 w-full">
+    <span className="text-2xl mb-1">⏰</span>
+    <p style={{ color: '#fde047', fontSize: '11px', fontWeight: 'bold', textTransform: 'uppercase', letterSpacing: '1px' }}>¿Hora?</p>
+    <p style={{ color: '#ffffff', fontSize: '15px', fontWeight: '500' }}>17:30hs a 20:00hs</p>
+  </div>
+
+  {/* Lugar */}
+  <div className="flex flex-col items-center space-y-1 w-full">
+    <span className="text-2xl mb-1">📍</span>
+    <p style={{ color: '#fde047', fontSize: '11px', fontWeight: 'bold', textTransform: 'uppercase', letterSpacing: '1px' }}>¿Dónde?</p>
+    <p style={{ color: '#ffffff', fontSize: '15px', fontWeight: '500', lineHeight: '1.3' }}>
+      Independencia 638 <span style={{ color: '#9ca3af', display: 'block', fontSize: '12px', fontWeight: 'normal', marginTop: '2px' }}>(Rio de juegos y Cafe)</span>
+    </p>
+  </div>
+
+</div>
+
+            {/* BLOQUE DE MAPA / CÓMO LLEGAR */}
+<div className="text-center bg-[#070b19] p-6 rounded-[2.5rem] shadow-2xl border border-yellow-200/40 space-y-4 mx-auto w-full">
+  
+  {/* Título "Cómo llegar" mejorado */}
+  <a 
+    href="https://maps.google.com/?q=Independencia+638" 
+    target="_blank" 
+    rel="noopener noreferrer"
+    className="inline-flex items-center justify-center gap-2 text-yellow-300 hover:text-yellow-200 font-semibold text-lg transition-colors duration-200 no-underline group"
+  >
+    <span className="text-2xl">🗺️</span>
+    <span className="border-b border-yellow-300/60 group-hover:border-yellow-200 pb-0.5">
+      Cómo llegar
+    </span>
+  </a>
+
+  {/* Contenedor del mapa */}
+  <div className="w-full h-48 rounded-2xl overflow-hidden border border-gray-700 shadow-inner">
+    <iframe
+      title="Mapa de ubicación"
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3105.1!2d-68.05!3d-38.95!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzjCsDU3JzAwLjAiUyA2OMKwMDMnMDAuMCJX!5e0!3m2!1ses!2sar!4v1600000000000!5m2!1ses!2sar"
+      width="100%"
+      height="100%"
+      style={{ border: 0 }}
+      allowFullScreen=""
+      loading="lazy"
+    ></iframe>
+  </div>
+
+</div>
 
             {/* BLOQUE 6: CONFIRMAR ASISTENCIA */}
-            <div className="text-center bg-[#070b19] p-6 rounded-[2.5rem] shadow-2xl border-2 border-yellow-200/60 flex flex-col items-center space-y-4 relative overflow-hidden">
+            <div className="text-center bg-[#070b19] p-6 rounded-[2.5rem] shadow-2xl border-2 border-yellow-200/60 flex flex-col items-center space-y-4 relative overflow-hidden mb-12">
               <span className="text-yellow-300 text-sm tracking-widest">✦ ── ✨ ── ✦</span>
               
               <h3 className="text-xl md:text-2xl font-serif italic tracking-wide" style={{ color: '#fde047' }}>
