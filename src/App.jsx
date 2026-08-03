@@ -346,12 +346,7 @@ function App() {
                 ¡CONFIRMÁ TU ASISTENCIA!
               </h3>
               
-              {/* Mensaje tierno */}
-              <p className="text-sm md:text-base italic leading-relaxed max-w-xs" style={{ color: '#ffffff' }}>
-                ¡No te quedes afuera de este viaje mágico! Por favor, confirmá antes del 29 de agosto.
-              </p>
-
-              {/* BOTÓN DE WHATSAPP */}
+               {/* BOTÓN DE WHATSAPP */}
               <a 
                 href="https://wa.me/5492995966349?text=¡Hola!%20Confirmo%20mi%20asistencia%20al%20cumple%20de%20Joaquín." 
                 target="_blank" 
@@ -363,6 +358,14 @@ function App() {
                 <span className="text-white no-underline font-bold" style={{ color: '#ffffff' }}>Confirmar por WhatsApp</span>
               </a>
 
+
+
+              {/* Mensaje tierno */}
+              <p className="text-sm md:text-base italic leading-relaxed max-w-xs" style={{ color: '#ffffff' }}>
+                ¡No te quedes afuera de este viaje mágico! Por favor, confirmá antes del 29 de agosto.
+              </p>
+
+             
             </div>
 
           </div>
