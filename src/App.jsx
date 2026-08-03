@@ -1,8 +1,14 @@
 import { useState, useEffect, useRef } from 'react';
 import imagenSobre from './assets/Sobre.jpg';
 import imagenInvitacion from './assets/invitacion_ingresar.jpg';
-import foto2 from './assets/Joaquin_Sentado.jpg'; 
-import foto3 from './assets/Joaquin_Pelotero.jpg'; 
+import foto1 from './assets/Joaquin_bebe.jpg';
+import foto2 from './assets/Joaquin_bebe2.jpg';
+import foto3 from './assets/Joaquin_papas.jpg';
+import foto4 from './assets/Joaquin_unaño.jpg';
+import foto5 from './assets/Joaquin_unaño2.jpg';
+import foto6 from './assets/Joaquin_auto.jpg';
+import foto7 from './assets/Joaquin_Sentado.jpg';
+import foto8 from './assets/Joaquin_Pelotero.jpg';
 import archivoMusica from './assets/musica.mp3';
 
 function App() {
@@ -43,7 +49,7 @@ function App() {
 
   // Control estricto del tiempo: se detiene exactamente a los 32 segundos de reproducción
   const handleTimeUpdate = () => {
-    if (audioRef.current && audioRef.current.currentTime >= 32) {
+    if (audioRef.current && audioRef.current.currentTime >= 120) {
       audioRef.current.pause();
       audioRef.current.currentTime = 32; 
       setReproduciendo(false);
@@ -95,8 +101,15 @@ function App() {
   // -----------------------------
 
   const fotosCarrusel = [
+    foto1,
     foto2,
     foto3,
+    foto4,
+    foto5,
+    foto6,
+    foto7,
+    foto8,
+
   ];
 
   const [fotoActual, setFotoActual] = useState(0);
@@ -186,22 +199,59 @@ function App() {
               <span className="absolute top-2 left-4 text-yellow-300 text-sm animate-pulse">✦</span>
               <span className="absolute top-3 right-6 text-yellow-300 text-xs animate-pulse">✨</span>
               
-              <h1 className="text-3xl md:text-4xl font-bold mb-3 drop-shadow" style={{ color: '#fde047' }}>¡Hola soy yo, Joaquin!</h1>
+              <h1 className="text-3xl md:text-4xl font-bold mb-3 drop-shadow" style={{ color: '#fde047' }}>¡Hola! soy Joaquin. 👑</h1>
               <p className="text-sm md:text-base italic font-light leading-relaxed" style={{ color: '#ffffff' }}>
-                "🌟Que lindo que hayas recibido mi invitaciòn. ¡Acompañame a festejar mis 2 añitos en este viaje mágico!🌟"
+                "Que alegria que hayas recibido mi invitaciòn. ✨ 
+              </p>
+              <p className="text-sm md:text-base italic font-light leading-relaxed" style={{ color: '#ffffff' }}>
+                Te invito a que me acompañes a celebrar mis 2 añitos y a vivir un viaje lleno de magia, sonrisas y momentos inolvidables. 🚀 <br />
+                ¡Te espero para compartir un dia de cuento!
               </p>
               
               <span className="absolute bottom-2 left-6 text-yellow-300 text-xs animate-pulse">⭐</span>
               <span className="absolute bottom-2 right-4 text-yellow-300 text-sm animate-pulse">✦</span>
             </div>
 
-            {/* BLOQUE 2: CRONÓMETRO */}
+            {/* BLOQUE 2: CARRUSEL DE FOTOS */}
+            <div 
+              className="text-center bg-[#070b19] p-5 rounded-[2.5rem] shadow-2xl flex flex-col items-center gap-4"
+              style={estiloBorde}
+            >
+              <div className="relative w-full aspect-square max-h-80 rounded-2xl overflow-hidden border border-white/50 flex items-center justify-center shadow-inner bg-transparent">
+                <img 
+                  src={fotosCarrusel[fotoActual]} 
+                  alt="Recuerdo de Joaquín" 
+                  className="w-full h-full object-cover transition-all duration-700 ease-in-out"
+                />
+              </div>
+              <h1 className="text-2xl md:text-2xl font-bold mb-2 drop-shadow" style={{ color: '#f3e5a1' }}>"Hoy soy el principito de esta gran aventura". 👑</h1>
+            </div>
+            
+            {/* BOTONES DE NAVEGACIÓN DEL CARRUSEL */}
+            <div className="flex gap-6 items-center justify-center py-3">
+              {fotosCarrusel.map((_, index) => (
+                <button
+                  key={index}
+                  onClick={() => seleccionarFoto(index)}
+                  className={`w-12 h-12 rounded-full font-bold text-lg transition-all duration-300 flex items-center justify-center shadow-lg border-2 cursor-pointer ${
+                    fotoActual === index 
+                      ? 'bg-yellow-300 text-slate-900 border-white scale-110' 
+                      : 'bg-slate-800 text-yellow-300 border-yellow-300/40 hover:bg-slate-700'
+                  }`}
+                  aria-label={`Ver foto ${index + 1}`}
+                >
+                  {index + 1}
+                </button>
+              ))}
+            </div>
+
+             {/* BLOQUE 3: CRONÓMETRO */}
             <div 
               className="text-center bg-[#070b19] p-6 rounded-[2.5rem] shadow-2xl"
               style={estiloBorde}
             >
               <p className="text-xs md:text-sm font-semibold mb-4 tracking-widest uppercase" style={{ color: '#fde047' }}>
-                ✨ ¡Falta muy poco para mi cumple! ✨
+                ✨ Cada segundo nos acerca a un dia magico ✨
               </p>
               
               <div className="grid grid-cols-4 gap-2 justify-items-center">
@@ -234,39 +284,6 @@ function App() {
                 </div>
               </div>
             </div>
-
-            {/* BLOQUE 3: CARRUSEL DE FOTOS */}
-            <div 
-              className="text-center bg-[#070b19] p-5 rounded-[2.5rem] shadow-2xl flex flex-col items-center gap-4"
-              style={estiloBorde}
-            >
-              <div className="relative w-full aspect-square max-h-80 rounded-2xl overflow-hidden border border-white/50 flex items-center justify-center shadow-inner bg-transparent">
-                <img 
-                  src={fotosCarrusel[fotoActual]} 
-                  alt="Recuerdo de Joaquín" 
-                  className="w-full h-full object-cover transition-all duration-700 ease-in-out"
-                />
-              </div>
-              <h1 className="text-2xl md:text-2xl font-bold mb-2 drop-shadow" style={{ color: '#f3e5a1' }}>¡Soy un principe 👑!</h1>
-            </div>
-            
-            {/* BOTONES DE NAVEGACIÓN DEL CARRUSEL */}
-            <div className="flex gap-6 items-center justify-center py-3">
-              {fotosCarrusel.map((_, index) => (
-                <button
-                  key={index}
-                  onClick={() => seleccionarFoto(index)}
-                  className={`w-12 h-12 rounded-full font-bold text-lg transition-all duration-300 flex items-center justify-center shadow-lg border-2 cursor-pointer ${
-                    fotoActual === index 
-                      ? 'bg-yellow-300 text-slate-900 border-white scale-110' 
-                      : 'bg-slate-800 text-yellow-300 border-yellow-300/40 hover:bg-slate-700'
-                  }`}
-                  aria-label={`Ver foto ${index + 1}`}
-                >
-                  {index + 1}
-                </button>
-              ))}
-            </div>
             
             {/* BLOQUE 4: DATOS DEL EVENTO */}
             <div 
@@ -275,22 +292,22 @@ function App() {
             >
               {/* Fecha */}
               <div className="flex flex-col items-center space-y-1 pb-4 border-b border-gray-800 w-full">
-                <span className="text-2xl mb-1">📅</span>
-                <p style={{ color: '#fde047', fontSize: '15px', fontWeight: 'bold', textTransform: 'uppercase', letterSpacing: '1px' }}>¿Cuándo?</p>
+                <span className="text-3xl mb-2">📅</span>
+                <p style={{ color: '#fde047', fontSize: '15px', fontWeight: 'bold', textTransform: 'uppercase', letterSpacing: '1px' }}>EL GRAN DIA ES: </p>
                 <p style={{ color: '#ffffff', fontSize: '22px', fontWeight: '500' }}>5 de septiembre</p>
               </div>
 
               {/* Hora */}
               <div className="flex flex-col items-center space-y-1 pb-4 border-b border-gray-800 w-full">
                 <span className="text-2xl mb-1">⏰</span>
-                <p style={{ color: '#fde047', fontSize: '15px', fontWeight: 'bold', textTransform: 'uppercase', letterSpacing: '1px' }}>¿Hora?</p>
+                <p style={{ color: '#fde047', fontSize: '15px', fontWeight: 'bold', textTransform: 'uppercase', letterSpacing: '1px' }}>LA HORA DEL FESTEJO ES: </p>
                 <p style={{ color: '#ffffff', fontSize: '22px', fontWeight: '500' }}>17:30hs a 20:00hs</p>
               </div>
 
               {/* Lugar */}
               <div className="flex flex-col items-center space-y-1 w-full">
                 <span className="text-2xl mb-1">📌</span>
-                <p style={{ color: '#fde047', fontSize: '15px', fontWeight: 'bold', textTransform: 'uppercase', letterSpacing: '1px' }}>¿Dónde?</p>
+                <p style={{ color: '#fde047', fontSize: '15px', fontWeight: 'bold', textTransform: 'uppercase', letterSpacing: '1px' }}>MI CASTILLO TE ESPERA EN: </p>
                 <p style={{ color: '#ffffff', fontSize: '20px', fontWeight: '500', lineHeight: '1.3' }}>
                   Independencia 638 <span style={{ color: '#9ca3af', display: 'block', fontSize: '14px', fontWeight: 'normal', marginTop: '2px' }}>(Rio de juegos y Cafe)</span>
                 </p>
@@ -343,7 +360,7 @@ function App() {
               
               {/* Título principal */}
               <h3 className="text-2xl md:text-3xl font-bold tracking-tight" style={{ color: '#fde047' }}>
-                ¡CONFIRMÁ TU ASISTENCIA!
+              ✨  ¿Me acompañas en esta aventura? ✨
               </h3>
               
                {/* BOTÓN DE WHATSAPP */}
@@ -362,7 +379,7 @@ function App() {
 
               {/* Mensaje tierno */}
               <p className="text-sm md:text-base italic leading-relaxed max-w-xs" style={{ color: '#ffffff' }}>
-                ¡No te quedes afuera de este viaje mágico! Por favor, confirmá antes del 29 de agosto.
+                Prepare este dia con mucha ilusion y me haria muy feliz compartirlo con vos. ¡Espero tu confirmaciòn, antes del 29 de agosto!
               </p>
 
              
