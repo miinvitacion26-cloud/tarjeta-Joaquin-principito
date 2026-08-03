@@ -47,7 +47,7 @@ function App() {
     }, 4500);
   };
 
-  // Control estricto del tiempo: se detiene exactamente a los 32 segundos de reproducción
+  // Control estricto del tiempo: se detiene exactamente a los 120 segundos de reproducción
   const handleTimeUpdate = () => {
     if (audioRef.current && audioRef.current.currentTime >= 120) {
       audioRef.current.pause();
@@ -109,7 +109,6 @@ function App() {
     foto6,
     foto7,
     foto8,
-
   ];
 
   const [fotoActual, setFotoActual] = useState(0);
@@ -174,7 +173,7 @@ function App() {
 
       {/* PANTALLA 3: INFORMACIÓN GENERAL */}
       {pantalla === 3 && (
-        <div className="w-full min-h-[100dvh] flex flex-col items-center p-4 relative bg-[#070b19] z-30 py-12 pb-52">
+        <div className="w-full min-h-[100dvh] flex flex-col items-center p-4 relative bg-[#070b19] z-30 py-20 pb-96">
           
           {/* ESTRELLITAS TEMPORALES */}
           {mostrarEstrellas && (
@@ -188,8 +187,8 @@ function App() {
             </div>
           )}
 
-          {/* CONTENEDOR GENERAL */}
-          <div className="relative z-10 w-full max-w-md flex flex-col space-y-10 mt-6">
+          {/* CONTENEDOR GENERAL CON ESPACIADO MÁXIMO (space-y-32) */}
+          <div className="relative z-10 w-full max-w-md flex flex-col space-y-32 mt-10">
             
             {/* BLOQUE 1: TÍTULO Y MENSAJE */}
             <div 
@@ -200,7 +199,7 @@ function App() {
               <span className="absolute top-3 right-6 text-yellow-300 text-xs animate-pulse">✨</span>
               
               <h1 className="text-3xl md:text-4xl font-bold mb-3 drop-shadow" style={{ color: '#fde047' }}>¡Hola! soy Joaquin. 👑</h1>
-              <p className="text-sm md:text-base italic font-light leading-relaxed" style={{ color: '#ffffff' }}>
+              <p className="text-sm md:text-base italic font-light leading-relaxed mb-2" style={{ color: '#ffffff' }}>
                 "Que alegria que hayas recibido mi invitaciòn. ✨ 
               </p>
               <p className="text-sm md:text-base italic font-light leading-relaxed" style={{ color: '#ffffff' }}>
@@ -212,37 +211,40 @@ function App() {
               <span className="absolute bottom-2 right-4 text-yellow-300 text-sm animate-pulse">✦</span>
             </div>
 
-            {/* BLOQUE 2: CARRUSEL DE FOTOS */}
-            <div 
-              className="text-center bg-[#070b19] p-5 rounded-[2.5rem] shadow-2xl flex flex-col items-center gap-4"
-              style={estiloBorde}
-            >
-              <div className="relative w-full aspect-square max-h-80 rounded-2xl overflow-hidden border border-white/50 flex items-center justify-center shadow-inner bg-transparent">
-                <img 
-                  src={fotosCarrusel[fotoActual]} 
-                  alt="Recuerdo de Joaquín" 
-                  className="w-full h-full object-cover transition-all duration-700 ease-in-out"
-                />
+            {/* BLOQUE 2: CARRUSEL DE FOTOS + BOTONES (Sin borde duro en la foto) */}
+            <div className="flex flex-col gap-6 w-full">
+              <div 
+                className="text-center bg-[#070b19] p-5 rounded-[2.5rem] shadow-2xl flex flex-col items-center gap-4"
+                style={estiloBorde}
+              >
+                {/* Contenedor de la foto sin borde blanco brusco, totalmente limpio */}
+                <div className="relative w-full aspect-square max-h-80 rounded-[2rem] overflow-hidden flex items-center justify-center shadow-inner bg-transparent">
+                  <img 
+                    src={fotosCarrusel[fotoActual]} 
+                    alt="Recuerdo de Joaquín" 
+                    className="w-full h-full object-cover transition-all duration-700 ease-in-out"
+                  />
+                </div>
+                <h1 className="text-xl md:text-2xl font-bold mb-2 drop-shadow" style={{ color: '#f3e5a1' }}>"Hoy soy el principito de esta gran aventura". 👑</h1>
               </div>
-              <h1 className="text-2xl md:text-2xl font-bold mb-2 drop-shadow" style={{ color: '#f3e5a1' }}>"Hoy soy el principito de esta gran aventura". 👑</h1>
-            </div>
-            
-            {/* BOTONES DE NAVEGACIÓN DEL CARRUSEL */}
-            <div className="flex gap-6 items-center justify-center py-3">
-              {fotosCarrusel.map((_, index) => (
-                <button
-                  key={index}
-                  onClick={() => seleccionarFoto(index)}
-                  className={`w-12 h-12 rounded-full font-bold text-lg transition-all duration-300 flex items-center justify-center shadow-lg border-2 cursor-pointer ${
-                    fotoActual === index 
-                      ? 'bg-yellow-300 text-slate-900 border-white scale-110' 
-                      : 'bg-slate-800 text-yellow-300 border-yellow-300/40 hover:bg-slate-700'
-                  }`}
-                  aria-label={`Ver foto ${index + 1}`}
-                >
-                  {index + 1}
-                </button>
-              ))}
+              
+              {/* BOTONES DE NAVEGACIÓN DEL CARRUSEL */}
+              <div className="flex flex-wrap gap-3 items-center justify-center py-3 px-2">
+                {fotosCarrusel.map((_, index) => (
+                  <button
+                    key={index}
+                    onClick={() => seleccionarFoto(index)}
+                    className={`w-10 h-10 md:w-12 md:h-12 rounded-full font-bold text-base md:text-lg transition-all duration-300 flex items-center justify-center shadow-lg border-2 cursor-pointer ${
+                      fotoActual === index 
+                        ? 'bg-yellow-300 text-slate-900 border-white scale-110' 
+                        : 'bg-slate-800 text-yellow-300 border-yellow-300/40 hover:bg-slate-700'
+                    }`}
+                    aria-label={`Ver foto ${index + 1}`}
+                  >
+                    {index + 1}
+                  </button>
+                ))}
+              </div>
             </div>
 
              {/* BLOQUE 3: CRONÓMETRO */}
@@ -314,7 +316,7 @@ function App() {
               </div>
             </div>
 
-            {/* BLOQUE DE MAPA / CÓMO LLEGAR */}
+            {/* BLOQUE DE MAPA / CÓMO LLEGAR (Mapa redondeado y limpio) */}
             <div 
               className="text-center bg-[#070b19] p-6 rounded-[2.5rem] shadow-2xl space-y-5 mx-auto w-full"
               style={estiloBorde}
@@ -324,7 +326,7 @@ function App() {
                 ✨  Ubicación 
               </h3>
 
-              {/* Botón para "Cómo llegar" (Estilo forzado para evitar color de enlace por defecto) */}
+              {/* Botón para "Cómo llegar" */}
               <a 
                 href="https://maps.google.com/?q=Independencia+638" 
                 target="_blank" 
@@ -336,11 +338,11 @@ function App() {
                 <span className="font-semibold" style={{ color: '#fde047' }}>Abrir en Google Maps</span>
               </a>
 
-              {/* Contenedor del mapa */}
-              <div className="w-full h-48 rounded-2xl overflow-hidden border border-gray-700 shadow-inner">
+              {/* Contenedor del mapa con esquinas redondeadas suaves */}
+              <div className="w-full h-48 rounded-[2rem] overflow-hidden shadow-inner bg-slate-900">
                 <iframe
                   title="Mapa de ubicación"
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3105.1!2d-68.05!3d-38.95!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzjCsDU3JzAwLjAiUyA2OMKwMDMnMDAuMCJX!5e0!3m2!1ses!2sar!4v1600000000000!5m2!1ses!2sar"
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3105.1!2d-68.05!3d-38.95!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2sMzjCsDU3JzAwLjAiUyA2OMKwMDMnMDAuMCJX!5e0!3m2!1ses!2sar!4v1600000000000!5m2!1ses!2sar"
                   width="100%"
                   height="100%"
                   style={{ border: 0 }}
@@ -352,7 +354,7 @@ function App() {
 
             {/* BLOQUE 6: CONFIRMAR ASISTENCIA */}
             <div 
-              className="text-center bg-[#070b19] p-6 md:p-8 rounded-[2.5rem] shadow-2xl flex flex-col items-center space-y-6 relative overflow-hidden mb-12"
+              className="text-center bg-[#070b19] p-6 md:p-8 rounded-[2.5rem] shadow-2xl flex flex-col items-center space-y-6 relative overflow-hidden mb-20"
               style={estiloBorde}
             >
               {/* Separador temático */}
@@ -375,14 +377,11 @@ function App() {
                 <span className="text-white no-underline font-bold" style={{ color: '#ffffff' }}>Confirmar por WhatsApp</span>
               </a>
 
-
-
               {/* Mensaje tierno */}
               <p className="text-sm md:text-base italic leading-relaxed max-w-xs" style={{ color: '#ffffff' }}>
                 Prepare este dia con mucha ilusion y me haria muy feliz compartirlo con vos. ¡Espero tu confirmaciòn, antes del 29 de agosto!
               </p>
 
-             
             </div>
 
           </div>
