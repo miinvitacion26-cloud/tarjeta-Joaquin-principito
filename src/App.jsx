@@ -154,7 +154,7 @@ function App() {
           <img 
             src={imagenInvitacion} 
             alt="¡Un viaje mágico hacia mis 2 años!" 
-            className="w-full h-full object-contain object-center absolute inset-0 -top-1 scale-[1.03] pointer-events-none"
+            className="w-full h-full object-cover object-center absolute inset-0 -top-1 scale-[1.03] pointer-events-none"
           />
         </div>
       )}
@@ -307,15 +307,16 @@ function App() {
                 ✨  Ubicación 
               </h3>
 
-              {/* Botón para "Cómo llegar" */}
+              {/* Botón para "Cómo llegar" (Estilo forzado para evitar color de enlace por defecto) */}
               <a 
                 href="https://maps.google.com/?q=Independencia+638" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="w-full bg-slate-800 hover:bg-slate-700 text-yellow-300 font-semibold py-3.5 px-6 rounded-2xl shadow-lg border border-yellow-300/40 flex items-center justify-center gap-3 transition-all transform hover:scale-[1.02] no-underline text-base cursor-pointer"
+                style={{ textDecoration: 'none', color: '#fde047' }}
               >
                 <span className="text-xl">🗺️</span>
-                <span>Abrir en Google Maps</span>
+                <span className="font-semibold" style={{ color: '#fde047' }}>Abrir en Google Maps</span>
               </a>
 
               {/* Contenedor del mapa */}
@@ -345,7 +346,12 @@ function App() {
                 ¡CONFIRMÁ TU ASISTENCIA!
               </h3>
               
-              {/* BOTÓN DE WHATSAPP MEJORADO (Con clases explícitas para color blanco de texto) */}
+              {/* Mensaje tierno */}
+              <p className="text-sm md:text-base italic leading-relaxed max-w-xs" style={{ color: '#ffffff' }}>
+                ¡No te quedes afuera de este viaje mágico! Por favor, confirmá antes del 29 de agosto.
+              </p>
+
+              {/* BOTÓN DE WHATSAPP */}
               <a 
                 href="https://wa.me/5492995966349?text=¡Hola!%20Confirmo%20mi%20asistencia%20al%20cumple%20de%20Joaquín." 
                 target="_blank" 
@@ -357,13 +363,6 @@ function App() {
                 <span className="text-white no-underline font-bold" style={{ color: '#ffffff' }}>Confirmar por WhatsApp</span>
               </a>
 
-
-              {/* Mensaje tierno */}
-              <p className="text-sm md:text-base italic leading-relaxed max-w-xs" style={{ color: '#ffffff' }}>
-                ¡No te quedes afuera de este viaje mágico! Por favor, confirmá antes del 29 de agosto.
-              </p>
-
-              
             </div>
 
           </div>
