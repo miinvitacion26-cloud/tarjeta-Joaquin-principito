@@ -132,7 +132,7 @@ function App() {
           <img 
             src={imagenSobre} 
             alt="Toca para abrir" 
-            className="w-full h-full object-cover object-center absolute inset-0 -top-1 scale-[1.03]"
+            className="w-full h-full object-contain object-center absolute inset-0 -top-1 scale-[1.03]"
           />
           <div className="absolute inset-0 bg-black/20 pointer-events-none"></div>
           <div className="absolute inset-0 flex items-center justify-center px-6 text-center pointer-events-none z-10">
