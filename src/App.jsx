@@ -218,18 +218,20 @@ function App() {
                 {fotosCarrusel.map((foto, index) => (
                   <div 
                     key={index} 
-                    className="relative w-full flex-shrink-0 aspect-square max-h-80 rounded-[2rem] overflow-hidden flex items-center justify-center shadow-inner bg-transparent snap-center"
+                    className="relative w-full flex-shrink-0 aspect-square max-h-80 rounded-[2rem] overflow-hidden flex items-center justify-center shadow-inner bg-slate-900 snap-center"
                   >
                     <img 
                       src={foto} 
                       alt={`Recuerdo de Joaquín ${index + 1}`} 
-                      className="w-full h-full object-cover"
+                      // Usamos object-contain global pero permitimos que cubra bien sin deformarse, 
+                      // o si es la foto 1 (index === 0), la anclamos con object-center para que no corte la cabeza
+                      className={`w-full h-full ${index === 0 ? 'object-contain bg-slate-900' : 'object-cover'}`}
                     />
                   </div>
                 ))}
               </div>
               
-              {/* Indicador visual forzado en color BLANCO */}
+              {/* Indicador visual en color BLANCO */}
               <p className="text-xs tracking-widest uppercase mt-1" style={{ color: '#ffffff' }}>
                 ↔ Desliza para ver más fotos ↔
               </p>
