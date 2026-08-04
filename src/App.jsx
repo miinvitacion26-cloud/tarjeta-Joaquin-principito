@@ -236,7 +236,7 @@ function App() {
                 ↔ Desliza para ver más fotos ↔
               </p>
 
-              <h1 className="text-xl md:text-2xl font-bold mb-2 drop-shadow" style={{ color: '#f3e5a1' }}>"Hoy soy el principito de esta gran aventura". 👑</h1>
+              <h1 className="text-xl md:text-2xl font-bold mb-2 drop-shadow" style={{ color: '#f3e5a1' }}>Hoy soy el principito de esta gran aventura. 👑</h1>
             </div>
 
              {/* BLOQUE 3: CRONÓMETRO */}
@@ -245,7 +245,7 @@ function App() {
               style={estiloBorde}
             >
               <p className="text-xs md:text-sm font-semibold mb-4 tracking-widest uppercase" style={{ color: '#fde047' }}>
-                ✨ Cada segundo nos acerca a un dia magico ✨
+                ✨ "Cada segundo nos acerca a un dia magico" ✨
               </p>
               
               <div className="grid grid-cols-4 gap-2 justify-items-center">
