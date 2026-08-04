@@ -111,12 +111,6 @@ function App() {
     foto8,
   ];
 
-  const [fotoActual, setFotoActual] = useState(0);
-
-  const seleccionarFoto = (index) => {
-    setFotoActual(index);
-  };
-
   return (
     <div className="min-h-screen bg-[#070b19] w-full relative overflow-x-hidden flex flex-col items-center">
       
@@ -211,40 +205,36 @@ function App() {
               <span className="absolute bottom-2 right-4 text-yellow-300 text-sm animate-pulse">✦</span>
             </div>
 
-            {/* BLOQUE 2: CARRUSEL DE FOTOS + BOTONES (Sin borde duro en la foto) */}
-            <div className="flex flex-col gap-6 w-full">
+            {/* BLOQUE 2: CARRUSEL DESLIZABLE HORIZONTAL */}
+            <div 
+              className="text-center bg-[#070b19] p-5 rounded-[2.5rem] shadow-2xl flex flex-col items-center gap-4"
+              style={estiloBorde}
+            >
+              {/* Contenedor con scroll horizontal táctil y barra oculta */}
               <div 
-                className="text-center bg-[#070b19] p-5 rounded-[2.5rem] shadow-2xl flex flex-col items-center gap-4"
-                style={estiloBorde}
+                className="w-full flex gap-4 overflow-x-auto snap-x snap-mandatory rounded-[2rem] pb-2" 
+                style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
               >
-                {/* Contenedor de la foto sin borde blanco brusco, totalmente limpio */}
-                <div className="relative w-full aspect-square max-h-80 rounded-[2rem] overflow-hidden flex items-center justify-center shadow-inner bg-transparent">
-                  <img 
-                    src={fotosCarrusel[fotoActual]} 
-                    alt="Recuerdo de Joaquín" 
-                    className="w-full h-full object-cover transition-all duration-700 ease-in-out"
-                  />
-                </div>
-                <h1 className="text-xl md:text-2xl font-bold mb-2 drop-shadow" style={{ color: '#f3e5a1' }}>"Hoy soy el principito de esta gran aventura". 👑</h1>
-              </div>
-              
-              {/* BOTONES DE NAVEGACIÓN DEL CARRUSEL */}
-              <div className="flex flex-wrap gap-3 items-center justify-center py-3 px-2">
-                {fotosCarrusel.map((_, index) => (
-                  <button
-                    key={index}
-                    onClick={() => seleccionarFoto(index)}
-                    className={`w-10 h-10 md:w-12 md:h-12 rounded-full font-bold text-base md:text-lg transition-all duration-300 flex items-center justify-center shadow-lg border-2 cursor-pointer ${
-                      fotoActual === index 
-                        ? 'bg-yellow-300 text-slate-900 border-white scale-110' 
-                        : 'bg-slate-800 text-yellow-300 border-yellow-300/40 hover:bg-slate-700'
-                    }`}
-                    aria-label={`Ver foto ${index + 1}`}
+                {fotosCarrusel.map((foto, index) => (
+                  <div 
+                    key={index} 
+                    className="relative w-full flex-shrink-0 aspect-square max-h-80 rounded-[2rem] overflow-hidden flex items-center justify-center shadow-inner bg-transparent snap-center"
                   >
-                    {index + 1}
-                  </button>
+                    <img 
+                      src={foto} 
+                      alt={`Recuerdo de Joaquín ${index + 1}`} 
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
                 ))}
               </div>
+              
+              {/* Indicador visual forzado en color BLANCO */}
+              <p className="text-xs tracking-widest uppercase mt-1" style={{ color: '#ffffff' }}>
+                ↔ Desliza para ver más fotos ↔
+              </p>
+
+              <h1 className="text-xl md:text-2xl font-bold mb-2 drop-shadow" style={{ color: '#f3e5a1' }}>"Hoy soy el principito de esta gran aventura". 👑</h1>
             </div>
 
              {/* BLOQUE 3: CRONÓMETRO */}
@@ -316,7 +306,7 @@ function App() {
               </div>
             </div>
 
-            {/* BLOQUE DE MAPA / CÓMO LLEGAR (Mapa redondeado y limpio) */}
+            {/* BLOQUE DE MAPA / CÓMO LLEGAR */}
             <div 
               className="text-center bg-[#070b19] p-6 rounded-[2.5rem] shadow-2xl space-y-5 mx-auto w-full"
               style={estiloBorde}
@@ -338,7 +328,7 @@ function App() {
                 <span className="font-semibold" style={{ color: '#fde047' }}>Abrir en Google Maps</span>
               </a>
 
-              {/* Contenedor del mapa con esquinas redondeadas suaves */}
+              {/* Contenedor del mapa */}
               <div className="w-full h-48 rounded-[2rem] overflow-hidden shadow-inner bg-slate-900">
                 <iframe
                   title="Mapa de ubicación"
